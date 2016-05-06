@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using Autofac;
 using Foundation;
 using UIKit;
 
@@ -19,7 +16,9 @@ namespace XamarinCI.iOS
 			Xamarin.Calabash.Start();
 #endif
 
-			LoadApplication(new App());
+			var builder = new ContainerBuilder();
+
+			LoadApplication(new App(builder));
 
 			return base.FinishedLaunching(app, options);
 		}

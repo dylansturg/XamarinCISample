@@ -1,30 +1,27 @@
-﻿using System;
-
+﻿using Autofac;
 using Xamarin.Forms;
+using XamarinCI.Service;
+using XamarinCI.ViewModel;
 
 namespace XamarinCI
 {
 	public class App : Application
 	{
-		public App()
-		{
-			// The root page of your application
-			var content = new ContentPage
-			{
-				Title = "XamarinCI",
-				Content = new StackLayout
-				{
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+		public static IContainer DependencyContainer { get; private set; }
 
-			MainPage = new NavigationPage(content);
+		public App(ContainerBuilder builder)
+		{
+			var optionsPage = new NavigationOptionsPage();
+			var rootNavigation = new NavigationPage(optionsPage);
+
+			builder.RegisterType<BasicNavigationService>().As<INavigationService>();
+			builder.RegisterType<NavigationOptionsViewModel>();
+
+			builder.RegisterInstance(rootNavigation).AsSelf();
+
+			DependencyContainer = builder.Build();
+
+			MainPage = rootNavigation;
 		}
 
 		protected override void OnStart()
@@ -41,6 +38,6 @@ namespace XamarinCI
 		{
 			// Handle when your app resumes
 		}
+
 	}
 }
-

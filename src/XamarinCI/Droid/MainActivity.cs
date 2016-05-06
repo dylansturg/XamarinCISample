@@ -1,12 +1,7 @@
-﻿using System;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Autofac;
 
 namespace XamarinCI.Droid
 {
@@ -22,7 +17,9 @@ namespace XamarinCI.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
-			LoadApplication(new App());
+			var builder = new ContainerBuilder();
+
+			LoadApplication(new App(builder));
 		}
 	}
 }
