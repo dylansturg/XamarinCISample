@@ -1,8 +1,10 @@
 ﻿using Autofac;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using XamarinCI.Service;
 using XamarinCI.ViewModel;
 
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamarinCI
 {
 	public class App : Application
@@ -15,7 +17,9 @@ namespace XamarinCI
 			var rootNavigation = new NavigationPage(optionsPage);
 
 			builder.RegisterType<BasicNavigationService>().As<INavigationService>();
+
 			builder.RegisterType<NavigationOptionsViewModel>();
+			builder.RegisterType<ListViewModel>();
 
 			builder.RegisterInstance(rootNavigation).AsSelf();
 

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Foundation;
 using UIKit;
+using XamarinCI.Service;
 
 namespace XamarinCI.iOS
 {
@@ -17,6 +18,8 @@ namespace XamarinCI.iOS
 #endif
 
 			var builder = new ContainerBuilder();
+
+			builder.RegisterType<FileService>().As<IFileService>();
 
 			LoadApplication(new App(builder));
 

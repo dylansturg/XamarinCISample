@@ -22,9 +22,9 @@ namespace XamarinCI.ViewModel
 			this.navigation = navigation;
 		}
 
-		private void NavigateToList()
+		private async void NavigateToList()
 		{
-			Debug.WriteLine("Going to a List!");
+			await navigation.PushPageAsync(new ListPage());
 		}
 
 		private void NavigateToImage()

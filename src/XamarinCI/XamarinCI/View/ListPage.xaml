@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:XamarinCI.Converters;assembly=XamarinCI" x:Class="XamarinCI.ListPage" Title="Octocats">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<ListView ItemsSource="{Binding Items}" ItemSelected="Handle_ItemSelected">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ImageCell Text="{Binding CatName}" ImageSource="{Binding FileName, Converter={StaticResource ImageSourceConverter}}">
+					</ImageCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

@@ -13,6 +13,14 @@ namespace XamarinCI
 			}
 		}
 
+		public static ListViewModel Octocats
+		{
+			get
+			{
+				return ResolveViewModel<ListViewModel>();
+			}
+		}
+
 		private static T ResolveViewModel<T>() where T : class
 		{
 			using (var scope = App.DependencyContainer.BeginLifetimeScope())
