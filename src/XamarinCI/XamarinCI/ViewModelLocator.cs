@@ -21,6 +21,14 @@ namespace XamarinCI
 			}
 		}
 
+		public static ImageViewModel CreateViewModelForImage(string title, string filename)
+		{
+			var viewModel = ResolveViewModel<ImageViewModel>();
+			viewModel.Title = title;
+			viewModel.ImageFile = filename;
+			return viewModel;
+		}
+
 		private static T ResolveViewModel<T>() where T : class
 		{
 			using (var scope = App.DependencyContainer.BeginLifetimeScope())

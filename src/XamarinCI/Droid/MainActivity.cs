@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Autofac;
+using XamarinCI.Service;
 
 namespace XamarinCI.Droid
 {
@@ -18,6 +19,8 @@ namespace XamarinCI.Droid
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
 			var builder = new ContainerBuilder();
+
+			builder.RegisterType<FileService>().As<IFileService>();
 
 			LoadApplication(new App(builder));
 		}

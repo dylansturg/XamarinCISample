@@ -35,6 +35,17 @@ namespace XamarinCI
 
 		void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e)
 		{
+			if (e.SelectedItem == null)
+			{
+				return;
+			}
+
+			var list = sender as ListView;
+			if (list != null)
+			{
+				list.SelectedItem = null;
+			}
+
 			octocatsModel.OctocatSelected?.Execute(e.SelectedItem);
 		}
 	}

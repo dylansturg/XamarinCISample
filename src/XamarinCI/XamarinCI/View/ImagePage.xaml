@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:XamarinCI.Converters;assembly=XamarinCI" x:Class="XamarinCI.ImagePage" Title="{Binding Title}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<ScrollView>
+			<Image Source="{Binding ImageFile, Converter={StaticResource ImageSourceConverter}}">
+			</Image>
+		</ScrollView>
+	</ContentPage.Content>
+</ContentPage>

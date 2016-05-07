@@ -20,6 +20,7 @@ namespace XamarinCI
 
 			builder.RegisterType<NavigationOptionsViewModel>();
 			builder.RegisterType<ListViewModel>();
+			builder.RegisterType<ImageViewModel>();
 
 			builder.RegisterInstance(rootNavigation).AsSelf();
 

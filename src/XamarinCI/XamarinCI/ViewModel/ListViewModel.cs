@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -44,23 +43,32 @@ namespace XamarinCI.ViewModel
 
 		public void LoadListItems()
 		{
-			var octocatsContents = fileService.ReadText("allcats.json");
-			var octocats = JsonConvert.DeserializeObject<List<string>>(octocatsContents);
-
-			var listItems = octocats.Select(cat => new ListItemViewModel
+			if (Items == null || Items.Count == 0)
 			{
-				CatName = Path.GetFileNameWithoutExtension(cat),
-				FileName = cat
-			});
+				var octocatsContents = fileService.ReadText("allcats.json");
+				var octocats = JsonConvert.DeserializeObject<List<string>>(octocatsContents);
 
-			Items = new ObservableCollection<ListItemViewModel>(listItems);
+				var listItems = octocats.Select(cat => new ListItemViewModel
+				{
+					CatName = Path.GetFileNameWithoutExtension(cat),
+					FileName = cat.Replace(".png", "_thumbnail.png")
+				});
+
+				Items = new ObservableCollection<ListItemViewModel>(listItems);
+			}
 		}
 
-		private void NavigateToOctocat(object selected)
+		private async void NavigateToOctocat(object selected)
 		{
 			var selectedOctocat = selected as ListItemViewModel;
-
-			Debug.WriteLine("selected cat: " + selectedOctocat?.CatName);
+			var filename = selectedOctocat.FileName;
+			if (filename.Contains("_thumbnail"))
+			{
+				filename = filename.Replace("_thumbnail", "");
+			}
+			var viewModel = ViewModelLocator.CreateViewModelForImage(selectedOctocat.CatName, filename);
+			var imagePage = new ImagePage(viewModel);
+			await navigation.PushPageAsync(imagePage);
 		}
 	}
 }
