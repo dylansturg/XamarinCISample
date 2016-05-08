@@ -130,15 +130,26 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\allcats.json" />
-    <BundleResource Include="Resources\daftpunktocat-thomas.png" />
+    <BundleResource Include="Resources\daftpunktocatthomas_thumbnail.png" />
+    <BundleResource Include="Resources\daftpunktocatthomas.png" />
+    <BundleResource Include="Resources\dunetocat_thumbnail.png" />
     <BundleResource Include="Resources\dunetocat.png" />
+    <BundleResource Include="Resources\femalecodertocat_thumbnail.png" />
     <BundleResource Include="Resources\femalecodertocat.png" />
+    <BundleResource Include="Resources\filmtocat_thumbnail.png" />
     <BundleResource Include="Resources\filmtocat.png" />
+    <BundleResource Include="Resources\jetpacktocat_thumbnail.png" />
     <BundleResource Include="Resources\jetpacktocat.png" />
+    <BundleResource Include="Resources\labtocat_thumbnail.png" />
     <BundleResource Include="Resources\labtocat.png" />
+    <BundleResource Include="Resources\privateinvestocat_thumbnail.png" />
     <BundleResource Include="Resources\privateinvestocat.jpg" />
+    <BundleResource Include="Resources\privateinvestocat.png" />
+    <BundleResource Include="Resources\saketocat_thumbnail.png" />
     <BundleResource Include="Resources\saketocat.png" />
+    <BundleResource Include="Resources\topguntocat_thumbnail.png" />
     <BundleResource Include="Resources\topguntocat.png" />
+    <BundleResource Include="Resources\welcometocat_thumbnail.png" />
     <BundleResource Include="Resources\welcometocat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

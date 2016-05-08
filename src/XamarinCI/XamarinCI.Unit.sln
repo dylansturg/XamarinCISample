@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCI", "XamarinCI\XamarinCI.csproj", "{DBA81BE4-7768-4986-A4A8-B682790CE73B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinCI.Tests", "XamarinCI.Tests\XamarinCI.Tests.csproj", "{2455C1F6-0AD4-4136-A41E-FAE56FA11FA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBA81BE4-7768-4986-A4A8-B682790CE73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA81BE4-7768-4986-A4A8-B682790CE73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA81BE4-7768-4986-A4A8-B682790CE73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA81BE4-7768-4986-A4A8-B682790CE73B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2455C1F6-0AD4-4136-A41E-FAE56FA11FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2455C1F6-0AD4-4136-A41E-FAE56FA11FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2455C1F6-0AD4-4136-A41E-FAE56FA11FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2455C1F6-0AD4-4136-A41E-FAE56FA11FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
