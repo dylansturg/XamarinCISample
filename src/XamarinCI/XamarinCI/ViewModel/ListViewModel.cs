@@ -47,14 +47,20 @@ namespace XamarinCI.ViewModel
 			{
 				var octocatsContents = fileService.ReadText("allcats.json");
 				var octocats = JsonConvert.DeserializeObject<List<string>>(octocatsContents);
-
-				var listItems = octocats.Select(cat => new ListItemViewModel
+				if (octocats != null && octocats.Count > 0)
 				{
-					CatName = Path.GetFileNameWithoutExtension(cat),
-					FileName = cat.Replace(".png", "_thumbnail.png")
-				});
+					var listItems = octocats.Select(cat => new ListItemViewModel
+					{
+						CatName = Path.GetFileNameWithoutExtension(cat),
+						FileName = cat.Replace(".png", "_thumbnail.png")
+					});
 
-				Items = new ObservableCollection<ListItemViewModel>(listItems);
+					Items = new ObservableCollection<ListItemViewModel>(listItems);
+				}
+				else
+				{
+					Items = new ObservableCollection<ListItemViewModel>();
+				}
 			}
 		}
 
