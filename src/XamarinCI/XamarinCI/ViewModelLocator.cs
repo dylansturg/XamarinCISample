@@ -1,10 +1,20 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using XamarinCI.ViewModel;
 
 namespace XamarinCI
 {
-	public static class ViewModelLocator
+	public class ViewModelLocator
 	{
+		private static ViewModelLocator instance;
+
+		private IContainer container;
+		public ViewModelLocator(IContainer dependencyContainer)
+		{
+			instance = this;
+			container = dependencyContainer;
+		}
+
 		public static NavigationOptionsViewModel NavigationOptions
 		{
 			get
@@ -31,7 +41,17 @@ namespace XamarinCI
 
 		private static T ResolveViewModel<T>() where T : class
 		{
-			using (var scope = App.DependencyContainer.BeginLifetimeScope())
+			if (instance == null)
+			{
+				throw new InvalidOperationException("ViewModelLocator used before initialization complete");
+			}
+
+			return instance.ResolveViewModelOfType<T>();
+		}
+
+		private T ResolveViewModelOfType<T>() where T : class
+		{
+			using (var scope = container.BeginLifetimeScope())
 			{
 				return scope.Resolve<T>();
 			}
