@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Collections.Generic;
+using Autofac;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinCI.Service;
@@ -22,9 +23,16 @@ namespace XamarinCI
 			builder.RegisterType<ListViewModel>();
 			builder.RegisterType<ImageViewModel>();
 
+			builder.RegisterType<ViewModelLocator>();
+
 			builder.RegisterInstance(rootNavigation).AsSelf();
 
 			DependencyContainer = builder.Build();
+
+			using (var scope = DependencyContainer.BeginLifetimeScope())
+			{
+				scope.Resolve<ViewModelLocator>(new TypedParameter(typeof(IContainer), DependencyContainer));
+			}
 
 			MainPage = rootNavigation;
 		}
